@@ -80,7 +80,7 @@ app.get('/:shortId', async (c) => {
     
 
     if (urlRecord) {
-      const redirectUrl = `https://utm.nextdevs.me/?shortId=${shortId}&originalUrl=${encodeURIComponent(urlRecord.originalUrl)}`;
+      const redirectUrl = `https://utmtrackingpage.vercel.app/?shortId=${shortId}&originalUrl=${encodeURIComponent(urlRecord.originalUrl)}`;
       return Response.redirect(redirectUrl, 302);
     } else {
       return c.json({ message: 'URL not found' }, 404, { ...corsHeaders });
@@ -139,3 +139,4 @@ app.post('/store-visitor-id', async (c) => {
 });
 
 export default app;
+

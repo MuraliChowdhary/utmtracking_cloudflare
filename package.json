@@ -1,17 +1,22 @@
 {
-  "name": "my-app",
+  "name": "url-shortener-worker",
+  "version": "1.0.0",
+  "description": "URL shortener built with Cloudflare Workers",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create url-shortener-db",
+    "db:init": "wrangler d1 execute url-shortener-db --local --file=./schema.sql",
+    "db:init-remote": "wrangler d1 execute url-shortener-db --file=./schema.sql"
   },
   "dependencies": {
-    "hono": "^4.7.10",
-    "my-app": "file:",
-    "nanoid": "^5.1.5"
+    "hono": "^4.7.11",
+    "nanoid": "^5.0.6",
+    "url-shortener-worker": "file:"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250529.0",
+    "@cloudflare/workers-types": "^4.20240208.0",
     "wrangler": "^4.18.0"
   }
 }
